@@ -14,4 +14,14 @@ $solver = new FrequencyCalculator($input, 0);
 echo("Day 1, part 1: " . $solver->solve() . "\n");
 
 $solver = new FrequencyCalibrator($input, 0);
-echo("Day 2, part 2: " . $solver->solve() . "\n");
+echo("Day 1, part 2: " . $solver->solve() . "\n");
+
+
+
+$inputFile = file_get_contents('./input/Day2/input.txt');
+$input = array_filter(explode("\n", $inputFile));
+
+$solver = new \Hitch\Day2\Checksum($input);
+echo("Day 2, part 1: " . $solver->solve() . "\n");
+$solver = new \Hitch\Day2\StringDiff($input);
+echo("Day 2, part 2: " .$solver->solve()."\n");
