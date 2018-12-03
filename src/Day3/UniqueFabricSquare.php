@@ -48,23 +48,16 @@ final class UniqueFabricSquare implements ProblemSolverInterface
                 for($j = $claim->y; $j < $claim->y + $claim->height; $j++){
                     if(isset($fabric[$i][$j])) {
                         $claim->excluded = true;
-                        /**
-                         * @var  $key
-                         * @var Claim $uniqueClaim
-                         */
-                        foreach($uniqueClaims as $key => $uniqueClaim) {
-                            if($uniqueClaim->contains($i, $j)) {
-                                $uniqueClaim->excluded = true;
-                                unset($uniqueClaims[$key]);
-                            }
-                        }
+
+                        unset($uniqueClaims[$fabric[$i][$j]->id]);
                     }
 
-                    $fabric[$i][$j] = '#';
+                    $fabric[$i][$j] = $claim;
                 }
             }
+
             if(!$claim->excluded) {
-                $uniqueClaims[]=$claim;
+                $uniqueClaims[$claim->id]=$claim;
             }
         }
 
