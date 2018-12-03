@@ -27,16 +27,16 @@ final class FrequencyCalibrator implements ProblemSolverInterface
     {
         $frequency = $this->startingFrequency;
         //Include the starting frequency
-        $frequencies = [$frequency];
+        $frequencies = [$frequency => $frequency];
 
         while (true) {
             foreach ($this->input as $value) {
                 $frequency += (int)$value;
 
-                if(in_array($frequency, $frequencies)) {
+                if(array_key_exists($frequency, $frequencies)) {
                     return (string)$frequency;
                 }
-                $frequencies[]= $frequency;
+                $frequencies[$frequency]= $frequency;
             }
         }
 
