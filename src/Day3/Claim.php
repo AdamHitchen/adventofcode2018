@@ -14,5 +14,15 @@ class Claim
     public $width;
     /** @var int */
     public $height;
+    /** @var bool */
+    public $excluded;
 
+
+    public function contains(int $x, int $y): bool
+    {
+        return ($x >= $this->x
+            && $y >= $this->y
+            && $x <= $this->x + $this->width
+            && $y <= $this->y + $this->height);
+    }
 }
