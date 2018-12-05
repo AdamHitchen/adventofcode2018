@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Tests\Day1;
+namespace Tests\Day3;
 
 use Hitch\Day3\FabricOverlapper;
 
