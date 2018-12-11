@@ -4,12 +4,14 @@ namespace Hitch\Day7;
 
 class Step
 {
-    public function __construct()
+    public function __construct($timeModifier = 0)
     {
         $this->completed = false;
         $this->before = [];
         $this->after = [];
+        $this->timeModifier = $timeModifier;
     }
+    public $timeModifier = 61;
 
     /** @var array */
     public $after;
@@ -19,6 +21,8 @@ class Step
     public $id;
     /** @var bool */
     public $completed;
+    /** @var bool  */
+    public $hasWorker = false;
 
     public function existsInArray(array $array)
     {
@@ -32,6 +36,10 @@ class Step
         return false;
     }
 
+    public function getDuration(): int
+    {
+        return ord(strtoupper($this->id)) - ord("A") + $this->timeModifier;
+    }
 
     public function isAvailable():bool
     {
